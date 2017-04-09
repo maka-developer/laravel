@@ -11,6 +11,12 @@
 |
 */
 
+Route::any('/test', function () {
+    return 1;
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
