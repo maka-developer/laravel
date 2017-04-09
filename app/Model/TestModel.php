@@ -6,6 +6,6 @@ class TestModel
 {
     public function test()
     {
-        return 11;
+        return "test";
     }
 }
