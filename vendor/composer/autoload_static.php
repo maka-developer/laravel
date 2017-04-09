@@ -64,6 +64,7 @@ class ComposerStaticInit7b20e4d61e2f88170fbbc44c70d38a1f
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Model\\' => 6,
         ),
         'L' => 
         array (
@@ -189,6 +190,10 @@ class ComposerStaticInit7b20e4d61e2f88170fbbc44c70d38a1f
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Model',
         ),
         'League\\Flysystem\\' => 
         array (
