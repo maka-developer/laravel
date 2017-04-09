@@ -16,13 +16,12 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "app/Model",
+            "app/Libs"
         ],
         "psr-4": {
-            "App\\": [
-                "app/",
-                "app/Model"
-            ]
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
