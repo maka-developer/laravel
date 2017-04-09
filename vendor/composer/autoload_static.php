@@ -229,7 +229,6 @@ class ComposerStaticInit7b20e4d61e2f88170fbbc44c70d38a1f
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
-            1 => __DIR__ . '/../..' . '/app/Model',
         ),
     );
 
@@ -805,6 +804,7 @@ class ComposerStaticInit7b20e4d61e2f88170fbbc44c70d38a1f
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'app\\Model\\TestModel' => __DIR__ . '/../..' . '/app/Model/TestModel.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
