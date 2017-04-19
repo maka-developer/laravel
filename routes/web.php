@@ -11,8 +11,12 @@
 |
 */
 
+
+//test
+Route::any('test','TestController@test');
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('test.welcome');
 });
 
 Route::get('test/set','Admin\AdminController@test');
