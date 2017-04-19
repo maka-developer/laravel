@@ -10,22 +10,8 @@ use Illuminate\Support\Facades\Redis;
 class AdminController extends Controller
 {
 
-    public function test(Request $request)
+    public function index()
     {
-        $key = $request->get('key');
-        $value = $request->get('value');
 
-        $set = Redis::set($key,$value);
-
-        echo $set;
-    }
-
-    public function get(Request $request)
-    {
-        $key = $request->get('key');
-
-        $value = Redis::get($key);
-
-        echo $value;
     }
 }

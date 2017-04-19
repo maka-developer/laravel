@@ -19,5 +19,4 @@ Route::get('/', function () {
     return view('test.welcome');
 });
 
-Route::get('test/set','Admin\AdminController@test');
-Route::get('test/get','Admin\AdminController@get');
+
