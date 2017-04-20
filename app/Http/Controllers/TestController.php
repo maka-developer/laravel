@@ -10,7 +10,7 @@ class TestController extends Controller
 
     public function test()
     {
-        $test = new Test();
-        echo $test->test();
+        $test = config('menu');
+        var_dump($test);
     }
 }
