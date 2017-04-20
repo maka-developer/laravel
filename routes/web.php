@@ -11,12 +11,25 @@
 |
 */
 
+Route::get('/', function(){
+    return view('welcome');
+});
 
 //test
 Route::any('test','TestController@test');
 
-Route::get('/', function () {
-    return view('test.welcome');
+
+//api
+
+Route::group(['middleware' => ['web','csrf']], function () {        //带csrf
+    Route::any('api/login','Admin\LoginController@login');
 });
 
+//admin 后台
 
+Route::group(['middleware' => ['admin']], function () {     //验证session
+    Route::get('/admin', 'Admin\AdminController@index');
+});
+
+//输出页面
+Route::get('admin/login','Admin\LoginController@index');    //登录页
