@@ -3,22 +3,16 @@
 namespace app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Libs\Power;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
 
-    public function __construct(Request $request)
-    {
-
-    }
-
     public function index(Request $request)
     {
-        //待写
-        $user = $request->session()->all();
-        var_dump($user);
-        exit();
+
+        $menu = Power::menu();                      //根据用户权限获取菜单
 
         return view('admin.index');
     }

@@ -19,7 +19,6 @@ class LoginController extends Controller
         $user = $request->user;     //用户名
         $pass = $request->pass;     //密码
 
-        //数据库  model  用户验证逻辑
         $user = UsersModel::where('user',$user)->first();   //按照用户名查询数据库
         //dd($user['attributes']);                           //attributes获得数据中数组
         if(empty($user)){           //没有用户

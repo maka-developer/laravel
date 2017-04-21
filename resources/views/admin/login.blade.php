@@ -25,7 +25,7 @@
         <div class="login-wrap">
             <input type="text" class="form-control user" placeholder="User ID" autofocus>
             <input type="password" class="form-control pass" placeholder="Password">
-            <?php echo csrf_field(); ?>
+            {{ csrf_field() }}
             <button class="btn btn-lg btn-login btn-block" type="submit" onclick="return verify()">
                 <i class="fa fa-check"></i>
             </button>

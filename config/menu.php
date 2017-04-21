@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'users'=>[
+    'user'=>[
         'name'=>'用户管理',
         'url'=>'',
         'fa'=>'',
