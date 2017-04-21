@@ -3,6 +3,7 @@
 namespace app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\UsersModel;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -19,10 +20,23 @@ class LoginController extends Controller
         $user = $request->user;     //用户名
         $pass = $request->pass;     //密码
 
-        $hash = password_hash($pass,PASSWORD_BCRYPT);   //密码加密
-
         //数据库  model  用户验证逻辑
+        $user = UsersModel::where('user',$user)->first();   //按照用户名查询数据库
+        if(empty($user)){           //没有用户
+            echo 1;
+            exit();
+        }
+        $hash = $user->hash;        //获得hash值
 
-        echo $hash;
+        if (password_verify($pass, $hash)) {
+            echo 't';
+        }
+        else {
+            
+            echo 'f';
+        }
+
+
+        exit();
     }
 }
