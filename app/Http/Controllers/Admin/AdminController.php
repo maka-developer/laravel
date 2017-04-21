@@ -16,9 +16,6 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         //待写
-
-        session()->forget('user');
-
         $user = $request->session()->all();
         var_dump($user);
         exit();

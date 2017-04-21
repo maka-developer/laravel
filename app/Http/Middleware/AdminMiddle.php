@@ -14,7 +14,7 @@ class AdminMiddle
 */
     public function handle($request, Closure $next)
     {
-        $user = session()->get('user');
+        $user = session()->get('admin-user');
         if ($user == '' || $user == null) {
             return redirect('admin/login');
         }

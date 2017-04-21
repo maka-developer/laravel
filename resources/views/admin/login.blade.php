@@ -41,7 +41,7 @@
         var pass = $('.pass').val();
         var token = $("input[name='_token']").val();
         if(user == '' || pass==''){
-            alert('请输入用户名或密码');
+            alert('请输入用户名或密码！');
             return false;
         }
         $.ajax({
@@ -49,11 +49,15 @@
             url: "{{ url('api/login') }}",
             data: {'user':user,'pass':pass,'_token':token},
             success: function(data){
-                console.log(data);
+                if(data.code == 10){
+                    alert('用户名或密码不正确！');
+                }else if(data.code == 200){
+                    window.location.href = '{{ url('admin') }}';
+                }
             },
             error: function(data)
             {
-                alert(data);
+                alert('系统错误，请稍后再试！');
             }
         });
 
