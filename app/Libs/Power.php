@@ -4,7 +4,7 @@ namespace App\Libs;
 class Power
 {
 
-    static public function menu()
+    static public function user()
     {
         $menu = config('menu');
 
@@ -15,9 +15,12 @@ class Power
             return [];
         }
 
+        $return_user['name'] = $user['name'];
+        $return_user['headimg'] = $user['headimg'];
+
         if($power == 'all'){                         //管理员
-            $menu_list = $menu;
-            return $menu_list;
+            $return_user['menu'] = $menu;
+            return $return_user;
         }
 
         $menu_list = [];
@@ -38,6 +41,8 @@ class Power
                 }
             }
         }
-        return $menu_list;
+
+        $return_user['menu'] = $menu_list;
+        return $user;
     }
 }

@@ -11,9 +11,9 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
+        $user = Power::user();                  //根据用户信息抓取视图层需要的数据  （菜单，头像，姓名）
 
-        $menu = Power::menu();                      //根据用户权限获取菜单
 
-        return view('admin.index');
+        return view('admin.index',['user'=>$user,'active'=>'','nav_active'=>'']);       //active:菜单选中状态   nav-active:跟菜单打开状态
     }
 }

@@ -1,10 +1,16 @@
 <?php
 
 return [
+    'home'=>[
+        'name'=>'首页',
+        'url'=>'admin',
+        'fa'=>'fa fa-home',
+        'list'=>[]
+    ],
     'user'=>[
         'name'=>'用户管理',
         'url'=>'',
-        'fa'=>'',
+        'fa'=>'fa fa-users',
         'list'=>[
             'user_list'=>[
                 'name'=>'用户列表',

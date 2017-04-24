@@ -8,7 +8,7 @@
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="#" type="image/png">
 
-    <title>AdminX</title>
+    <title>loodp</title>
 
     <!--icheck-->
     <link href="{{ url('public/asset') }}/js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
@@ -36,11 +36,11 @@
 
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href="index.html"><img src="{{ url('public/asset') }}/images/logo.png" alt=""></a>
+            <a href="admin"><img src="{{ url('public/asset') }}/images/logo.png" alt=""></a>
         </div>
 
         <div class="logo-icon text-center">
-            <a href="index.html"><img src="{{ url('public/asset') }}/images/logo_icon.png" alt=""></a>
+            <a href="admin"><img src="{{ url('public/asset') }}/images/logo_icon.png" alt=""></a>
         </div>
         <!--logo and iconic logo end-->
 
@@ -49,21 +49,19 @@
             <!-- visible to small devices only 包含手机版 -->
             <div class="visible-xs hidden-sm hidden-md hidden-lg">
                 <div class="media logged-user">
-                    <img alt="" src="{{ url('public/asset') }}/images/photos/user-avatar.png" class="media-object">
+                    <img alt="" src="@yield('u_headimg')" class="media-object">
                     <div class="media-body">
-                        <h4><a href="#">John Doe</a></h4>
-                        <span>"Hello There..."</span>
+                        <h4><a href="#">@yield('u_name')</a></h4>
                     </div>
                 </div>
 
                 <h5 class="left-nav-title">Account Information</h5>
                 <ul class="nav nav-pills nav-stacked custom-nav">
-                    <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
-                    <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
                     <li><a href="#"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
                 </ul>
             </div>
 
+            @section('menu')
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
                 <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
@@ -106,6 +104,7 @@
 
             </ul>
             <!--sidebar nav end-->
+            @show
 
         </div>
     </div>
@@ -126,14 +125,12 @@
                 <ul class="notification-menu">
                     <li>
                         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ url('public/asset') }}/images/photos/user-avatar.png" alt="" />
-                            John Doe
+                            <img src="@yield('u_headimg')" alt="" />
+                            @yield('u_name')
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                            <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
-                            <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                            <li><a href="api/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
                         </ul>
                     </li>
                 </ul>
