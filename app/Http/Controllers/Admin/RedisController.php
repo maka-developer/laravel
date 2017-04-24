@@ -14,6 +14,10 @@ class RedisController extends Controller
         $user = Power::user();                  //根据用户信息抓取视图层需要的数据  （菜单，头像，姓名）
         $user['active'] = 'redis';
         $user['nav_active'] = '';
+      
+        $value = Redis::get('laravel:8MRGvGgqrztw842E9RIHiAAZihKc8I0koxMbiND2');
+        dd($value);
+        exit();
 		
       	$arr = array();
         $keys = Redis::keys('*');
