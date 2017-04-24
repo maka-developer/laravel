@@ -31,7 +31,7 @@ class RedisController extends Controller
     public function del(Request $request)
     {
         $key = $request->key;
-        echo $key;
-        exit();
+        Redis::delete($key);
+        return redirect('admin/redis');
     }
 }
