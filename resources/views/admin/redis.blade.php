@@ -39,12 +39,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 5.5</td>
-                                    <td>Win 95+</td>
-                                </tr>
+                                @foreach($list as $key=>$value)
+                                    <tr class="gradeA">
+                                        <td>{{ $value['key'] }}</td>
+                                        <td>{{ $value['type'] }}</td>
+                                        <td><a href="" class="del">删除</a></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

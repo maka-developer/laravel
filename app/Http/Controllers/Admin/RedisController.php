@@ -14,21 +14,16 @@ class RedisController extends Controller
         $user = Power::user();                  //根据用户信息抓取视图层需要的数据  （菜单，头像，姓名）
         $user['active'] = 'redis';
         $user['nav_active'] = '';
-      
-        $value = Redis::get('laravel:8MRGvGgqrztw842E9RIHiAAZihKc8I0koxMbiND2');
-        dd($value);
-        exit();
 		
-      	$arr = array();
+      	$list = array();
         $keys = Redis::keys('*');
       	if(!empty($keys)){
-          foreach($keys as $item){
-            $arr[$item] = Redis::type($item);
-          }
+            foreach($keys as $key=>$value){
+                $list[$key]['key']  = $value;
+                $list[$key]['type'] = Redis::type($value);
+            }
         }
-        dd($arr);
-      	exit();
 
-        return view('admin.redis',['user'=>$user]);       //active:菜单选中状态   nav-active:跟菜单打开状态
+        return view('admin.redis',['user'=>$user,'list'=>$list]);       //active:菜单选中状态   nav-active:跟菜单打开状态
     }
 }
