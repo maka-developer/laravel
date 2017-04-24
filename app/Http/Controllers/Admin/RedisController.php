@@ -14,7 +14,6 @@ class RedisController extends Controller
     {
         $user = Power::user();                  //根据用户信息抓取视图层需要的数据  （菜单，头像，姓名）
         $user['active'] = 'redis';
-        $user['nav_active'] = '';
 		
       	$list = array();
         $keys = Redis::keys('*');
@@ -46,7 +45,7 @@ class RedisController extends Controller
             }
         }
 
-        return view('admin.redis',['user'=>$user,'list'=>$list]);       //active:菜单选中状态   nav-active:跟菜单打开状态
+        return view('admin.redis',['user'=>$user,'list'=>$list]);
     }
 
     public function del(Request $request)

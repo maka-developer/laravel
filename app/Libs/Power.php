@@ -15,8 +15,10 @@ class Power
             return [];
         }
 
-        $return_user['name'] = $user['name'];
-        $return_user['headimg'] = $user['headimg'];
+        $return_user['name'] = $user['name'];       //用户名
+        $return_user['headimg'] = $user['headimg'];//用户头像
+        $return_user['active'] = '';                //当前页
+        $return_user['nav_active'] = '';           //当前页根菜单
 
         if($power == 'all'){                         //管理员
             $return_user['menu'] = $menu;

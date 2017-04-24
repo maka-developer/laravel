@@ -27,11 +27,11 @@ Route::group(['middleware' => ['web','csrf']], function () {        //带csrf   
 });
 
 //admin 后台
-
+Route::get('admin/login','Admin\LoginController@index');         //登录页
 Route::group(['middleware' => ['admin']], function () {             //验证session -group
     Route::get('admin', 'Admin\AdminController@index');          //后台主页
     Route::get('admin/redis', 'Admin\RedisController@rlist');   //Redis list
+    Route::get('admin/setting', 'Admin\AdminController@information');          //管理员个人信息修改
 });
 
-//输出页面
-Route::get('admin/login','Admin\LoginController@index');         //登录页
+
