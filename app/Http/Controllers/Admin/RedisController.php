@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Libs\Power;
 use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class RedisController extends Controller
 {
