@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web','csrf']], function () {        //带csrf   
 
 Route::group(['middleware' => ['admin']], function () {             //验证session -group
     Route::get('/admin', 'Admin\AdminController@index');          //后台主页
+    Route::get('/admin/redis', 'Admin\RedisController@rlist');          //Redis list
 });
 
 //输出页面

@@ -25,5 +25,11 @@ return [
                 'url'=>''
             ]
         ]
+    ],
+    'redis'=>[
+        'name'=>'Redis',
+        'url'=>'/admin/redis',
+        'fa'=>'fa fa-briefcase',
+        'list'=>[]
     ]
 ];

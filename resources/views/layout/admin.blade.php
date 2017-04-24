@@ -10,6 +10,7 @@
 
     <title>loodp</title>
 
+    @section('h_link')
     <!--icheck-->
     <link href="{{ url('public/asset') }}/js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
     <link href="{{ url('public/asset') }}/js/iCheck/skins/square/square.css" rel="stylesheet">
@@ -25,7 +26,7 @@
     <!--common-->
     <link href="{{ url('public/asset') }}/css/style.css" rel="stylesheet">
     <link href="{{ url('public/asset') }}/css/style-responsive.css" rel="stylesheet">
-
+    @show
 </head>
 
 <body class="sticky-header">
