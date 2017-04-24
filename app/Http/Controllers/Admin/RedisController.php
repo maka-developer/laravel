@@ -17,9 +17,7 @@ class RedisController extends Controller
 		
       	$arr = array();
         $keys = Redis::keys('*');
-      	dd($keys);
-      	exit();
-      	if(!empty($keys){
+      	if(!empty($keys)){
           foreach($keys as $item){
             $arr[$item] = Redis::type($item);
           }
