@@ -43,7 +43,7 @@
                                     <tr class="gradeA">
                                         <td>{{ $value['key'] }}</td>
                                         <td>{{ $value['type'] }}</td>
-                                        <td><a href="" class="del">删除</a></td>
+                                        <td><a href="api/delredis?key={{ $value['key'] }}" class="del">删除</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

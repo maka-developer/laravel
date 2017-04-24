@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Libs\Power;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Request;
 
 class RedisController extends Controller
 {
@@ -25,5 +26,12 @@ class RedisController extends Controller
         }
 
         return view('admin.redis',['user'=>$user,'list'=>$list]);       //active:菜单选中状态   nav-active:跟菜单打开状态
+    }
+
+    public function del(Request $request)
+    {
+        $key = $request->key;
+        echo $key;
+        exit();
     }
 }

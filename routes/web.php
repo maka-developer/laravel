@@ -21,6 +21,7 @@ Route::any('test','TestController@test');                            //测试方
 
 //api
 Route::any('api/logout','Admin\LoginController@logout');          //后台登出
+Route::get('api/delredis','Admin\RedisController@del');           //删除redis-key
 Route::group(['middleware' => ['web','csrf']], function () {        //带csrf   -group
     Route::any('api/login','Admin\LoginController@login');         //后台登录
 });
@@ -29,7 +30,7 @@ Route::group(['middleware' => ['web','csrf']], function () {        //带csrf   
 
 Route::group(['middleware' => ['admin']], function () {             //验证session -group
     Route::get('/admin', 'Admin\AdminController@index');          //后台主页
-    Route::get('/admin/redis', 'Admin\RedisController@rlist');          //Redis list
+    Route::get('/admin/redis', 'Admin\RedisController@rlist');   //Redis list
 });
 
 //输出页面
