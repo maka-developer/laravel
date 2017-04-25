@@ -131,7 +131,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                            <li><a href="api/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                            <li><a href="{{ url('admin/setting') }}"><i class="fa fa-sign-out"></i> Setting</a></li>
+                            <li><a href="{{ url('api/logout') }}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                         </ul>
                     </li>
                 </ul>

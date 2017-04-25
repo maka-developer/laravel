@@ -19,3 +19,27 @@
         @endforeach
     </ul>
 @stop
+
+@section('content')
+    <form name="form1" id="form1">
+        <p>photo:<input type="file" name="photo" id="photo"></p>
+        <p><input type="button" name="b1" value="submit" onclick="fsubmit()"></p>
+    </form>
+    <div id="result"></div>
+
+    <script type="text/javascript">
+        function fsubmit(){
+            var data = new FormData($('#form1')[0]);
+            $.ajax({
+                url: '{{ url('api/uploadimg') }}?dir=exl',
+                type: 'POST',
+                data: data,
+                processData: false,
+                contentType: false
+            }).done(function(ret){
+                console.log(ret);
+            });
+            return false;
+        }
+    </script>
+@stop

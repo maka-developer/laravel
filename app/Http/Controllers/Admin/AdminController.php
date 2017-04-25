@@ -19,7 +19,7 @@ class AdminController extends Controller
 
     public function information()
     {
-        $user = Power::user();
+        $user = Power::user();                                //需要返回用户原来的信息（姓名、头像等）,user方法包含
 
         return view('admin.setting',['user'=>$user]);
     }
@@ -29,6 +29,7 @@ class AdminController extends Controller
     {
         $name = $requeset->name;
         $headimg = $requeset->headimg;
+
 
     }
 }
