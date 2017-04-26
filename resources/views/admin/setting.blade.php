@@ -21,12 +21,44 @@
 @stop
 
 @section('content')
-    <form name="form1" id="form1">
-        <p>photo:<input type="file" name="photo" id="photo"></p>
-        <p><input type="button" name="b1" value="submit" onclick="fsubmit()"></p>
-    </form>
-    <div id="result"></div>
-
+    <style>
+        .headimg{
+            width: 200px;
+            height: 200px;
+            display: none;
+        }
+    </style>
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        信息设置
+                    </header>
+                    <div class="panel-body">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>姓名</label>
+                                    <input type="text" class="form-control name" placeholder="名称">
+                                </div>
+                                <div class="form-group">
+                                    <a class="pic-click">上传头像</a>
+                                    <img class="headimg" src="" alt="">
+                                </div>
+                                <div class="text-center ">
+                                    <a class="btn btn-info btn-lg"> 提交 </a>
+                                    <a class="btn btn-default btn-lg" target="_blank" href="https://www.baidu.com"> 取消 </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <input type="file" name="photo" id="photo" style="display: none;">
+    <script src="{{ url('public/asset') }}/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         function fsubmit(){
             var data = new FormData($('#form1')[0]);
@@ -41,5 +73,20 @@
             });
             return false;
         }
+        $('.pic-click').click(function(){
+            $('#photo').click();
+        })
     </script>
+@stop
+
+@section('link')
+        <!-- Placed js at the end of the document so the pages load faster -->
+    <script src="{{ url('public/asset') }}/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/bootstrap.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/modernizr.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/jquery.nicescroll.js"></script>
+
+    <!--common scripts for all pages-->
+    <script src="{{ url('public/asset') }}/js/scripts.js"></script>
 @stop
