@@ -11,3 +11,4 @@ Homestead.yaml
 /public/.htaccess
 /public/.user.ini
 uploads/
+public/upload/
