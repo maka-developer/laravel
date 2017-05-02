@@ -19,3 +19,77 @@
         @endforeach
     </ul>
 @stop
+
+@section('content')
+    <style>
+        .img{
+            width: 200px;
+            height:200px;
+        }
+    </style>
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        添加用户
+                    </header>
+                    <form role="form">
+                        <div class="panel-body">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>姓名</label>
+                                    <input type="text" class="form-control name" placeholder="名称" style="width: 60%;">
+                                </div>
+                                <div class="form-group">
+                                    <label>邮箱</label>
+                                    <input type="text" class="form-control name" placeholder="名称" style="width: 60%;">
+                                </div>
+                                <div class="form-group">
+                                    <label>电话</label>
+                                    <input type="text" class="form-control name" placeholder="名称" style="width: 60%;">
+                                </div>
+                                <div class="form-group">
+                                    <label>个人签名</label>
+                                    <textarea type="text" class="form-control name" placeholder="名称"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                头像
+                                <div class="form-group">
+                                    <img src="https://sys.loodp.com/public/upload/headimg/20170425142808.jpg" class="img" />
+                                </div>
+                                <button type="button" class="btn uploadimg" onclick="uploadimg()">上传图片</button>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="text-center ">
+                                    <a class="btn btn-info btn-lg" onclick="uploadimg()"> 提交 </a>
+                                    <a class="btn btn-default btn-lg" target="_blank" href="https://www.baidu.com"> 取消 </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        function uploadimg()
+        {
+            alert(1);
+        }
+    </script>
+@stop
+
+@section('link')
+    <script src="{{ url('public/asset') }}/js/jquery-1.10.2.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/bootstrap.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/modernizr.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/jquery.nicescroll.js"></script>
+
+    <!--common scripts for all pages-->
+    <script src="{{ url('public/asset') }}/js/scripts.js"></script>
+@stop
+

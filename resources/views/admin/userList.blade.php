@@ -38,7 +38,9 @@
                                     <th>邮箱</th>
                                     <th>电话</th>
                                     <th>创建时间</th>
-                                    <th>操作</th>
+                                    @if($act == 'root')
+                                        <th>操作</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +51,9 @@
                                         <td>{{ $value['email'] }}</td>
                                         <td>{{ $value['phone'] }}</td>
                                         <td>{{ $value['addtime'] }}</td>
-                                        <td><a href="{{ url('api/deluser') }}?key={{ $value['key'] }}" class="del">删除</a></td>
+                                        @if($act == 'root')
+                                        <td><a href="{{ url('api/user/del') }}?id={{ $value['id'] }}" class="del">删除</a></td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
