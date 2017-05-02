@@ -32,7 +32,8 @@ Route::group(['middleware' => ['admin']], function () {             //验证sess
     Route::get('admin', 'Admin\AdminController@index');           //后台主页
     Route::get('admin/redis', 'Admin\RedisController@rlist');    //Redis list
     Route::get('admin/setting', 'Admin\AdminController@information');          //管理员个人信息修改
-    Route::get('admin/user', 'Admin\UserController@userList');          //管理员个人信息修改
+    Route::get('admin/user/list', 'Admin\UserController@userList');          //用户列表
+    Route::get('admin/user/add', 'Admin\UserController@userAdd');          //增加用户
 });
 
 
