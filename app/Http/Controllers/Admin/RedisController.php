@@ -12,9 +12,6 @@ class RedisController extends Controller
 
     public function rlist()
     {
-        $user = Power::user();                  //根据用户信息抓取视图层需要的数据  （菜单，头像，姓名）
-        $user['active'] = 'redis';
-		
       	$list = array();
         $keys = Redis::keys('*');
       	if(!empty($keys)){
@@ -45,7 +42,7 @@ class RedisController extends Controller
             }
         }
 
-        return view('admin.redis',['user'=>$user,'list'=>$list]);
+        return render('admin.redis',['list'=>$list]);
     }
 
     public function del(Request $request)

@@ -11,17 +11,12 @@ class AdminController extends Controller
 
     public function index()
     {
-        $user = Power::user();                                //根据用户信息抓取视图层需要的数据  （菜单，头像，姓名）
-        $user['active'] = 'home';                           //active:菜单选中状态
-
-        return view('admin.index',['user'=>$user]);
+        return render('admin.index');
     }
 
     public function information()
     {
-        $user = Power::user();                                //需要返回用户原来的信息（姓名、头像等）,user方法包含
-
-        return view('admin.setting',['user'=>$user]);
+        return render('admin.setting');
     }
 
     //修改用户信息

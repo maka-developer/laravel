@@ -14,11 +14,11 @@ return [
         'list'=>[
             'user_list'=>[
                 'name'=>'用户列表',
-                'url'=>'',
+                'url'=>'admin/user/list',
             ],
             'user_add'=>[
                 'name'=>'添加用户',
-                'url'=>''
+                'url'=>'admin/user/add'
             ],
             'user_power'=>[
                 'name'=>'用户权限',

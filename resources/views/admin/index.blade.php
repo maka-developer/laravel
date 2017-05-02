@@ -1,9 +1,7 @@
 @extends('layout.admin')
-
 @section('u_name',$user['name'])
-
 @section('u_headimg',$user['headimg'])
-
+{{ $user['active'] = 'home' }}  {{-- 选中状态，多重加上 nav-active --}}
 @section('menu')
     <ul class="nav nav-pills nav-stacked custom-nav">
         @foreach($user['menu'] as $key=>$value)

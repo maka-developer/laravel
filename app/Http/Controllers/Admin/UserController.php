@@ -8,15 +8,16 @@ use App\Model\UsersModel;
 
 class UserController extends Controller
 {
-
+    //用户列表
     public function userList()
     {
-        $user = Power::user();
-        $user['nav_active'] = 'user';
-        $user['active'] = 'user_list';
-
         $users = UsersModel::where('state','0')->get();
 
-        return view('admin.userList',['user'=>$user,'list'=>$users]);
+        return render('admin.userList',['list'=>$users]);
+    }
+    //添加用户
+    public function userAdd()
+    {
+        return render('admin.userAdd');
     }
 }
