@@ -21,7 +21,8 @@ Route::any('test','TestController@test');                            //测试方
 //api
 Route::any('api/logout','Admin\LoginController@logout');          //后台登出
 Route::get('api/delredis','Admin\RedisController@del');           //删除redis-key
-Route::any('api/uploadimg','Api\UploadController@img');           //删除redis-key
+Route::any('api/uploadimg','Api\UploadController@img');           //上传图片（纯上传）
+Route::get('api/user/del','Admin\UserController@userDel');        //删除用户
 Route::group(['middleware' => ['web','csrf']], function () {        //带csrf   -group
     Route::any('api/login','Admin\LoginController@login');         //后台登录
 });
