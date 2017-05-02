@@ -908,3 +908,14 @@ if (! function_exists('view')) {
         return $factory->make($view, $data, $mergeData);
     }
 }
+
+if (! function_exists('render')) {
+    //后端页面
+    function render($view = null, $data = [], $mergeData = [])
+    {
+        $user = \App\Libs\Power::user();    //根据用户信息抓取视图层需要的数据  （菜单，头像，姓名）
+        $data['user'] = $user;
+
+        return view($view,$data,$mergeData);
+    }
+}
