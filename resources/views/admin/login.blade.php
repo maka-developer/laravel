@@ -48,6 +48,7 @@
             type: "POST",
             url: "{{ url('api/login') }}",
             data: {'user':user,'pass':pass,'_token':token},
+            dataType: "json",
             success: function(data){
                 if(data.code == 10){
                     alert('用户名或密码不正确！');
