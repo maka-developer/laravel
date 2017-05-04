@@ -39,19 +39,19 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>姓名</label>
-                                    <input type="text" class="form-control name" placeholder="名称" style="width: 60%;">
+                                    <input type="text" class="form-control" id="name" placeholder="姓名" style="width: 60%;">
                                 </div>
                                 <div class="form-group">
                                     <label>邮箱</label>
-                                    <input type="text" class="form-control name" placeholder="名称" style="width: 60%;">
+                                    <input type="text" class="form-control" id="email" placeholder="邮箱" style="width: 60%;">
                                 </div>
                                 <div class="form-group">
                                     <label>电话</label>
-                                    <input type="text" class="form-control name" placeholder="名称" style="width: 60%;">
+                                    <input type="text" class="form-control" id="phone" placeholder="电话" style="width: 60%;">
                                 </div>
                                 <div class="form-group">
                                     <label>个人签名</label>
-                                    <textarea type="text" class="form-control name" placeholder="名称"></textarea>
+                                    <textarea type="text" class="form-control" id="signature" placeholder="个人签名"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -63,7 +63,8 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="text-center ">
-                                    <a class="btn btn-info btn-lg" onclick="uploadimg()"> 提交 </a>
+                                    {{ csrf_field() }}
+                                    <a class="btn btn-info btn-lg" onclick="putContents()"> 提交 </a>
                                     <a class="btn btn-default btn-lg" target="_blank" href="https://www.baidu.com"> 取消 </a>
                                 </div>
                             </div>
@@ -73,16 +74,57 @@
             </div>
         </div>
     </section>
+    <script src="{{ url('public/asset') }}/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         function uploadimg()
         {
             alert(1);
         }
+        function putContents()
+        {
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var phone = $('#phone').val();
+            var signature = $('#signature').val();
+            var token = $("input[name='_token']").val();
+            if(name == ''){
+                alert('请输入姓名');
+                return false;
+            }
+            if(email == ''){
+                alert('请输入邮箱');
+                return false;
+            }
+            if(!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(email)){
+                alert('邮箱格式不合法');
+                return false;
+            }
+            if(phone == ''){
+                alert('请输入电话号');
+                return false;
+            }
+            if(!(/^1[34578]\d{9}$/.test(phone))){
+                alert('手机号不合法');
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "{{ url('api/user/add') }}",
+                data: {'name':name,'email':email,'phone':phone,'signature':signature,'_token':token},
+                dataType: "json",
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(data)
+                {
+                    alert('系统错误，请稍后再试！');
+                }
+            });
+        }
     </script>
 @stop
 
 @section('link')
-    <script src="{{ url('public/asset') }}/js/jquery-1.10.2.min.js"></script>
     <script src="{{ url('public/asset') }}/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script src="{{ url('public/asset') }}/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="{{ url('public/asset') }}/js/bootstrap.min.js"></script>
