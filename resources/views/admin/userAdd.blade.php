@@ -113,11 +113,17 @@
                 data: {'name':name,'email':email,'phone':phone,'signature':signature,'_token':token},
                 dataType: "json",
                 success: function(data){
-                    console.log(data);
+                    var code = data.code;
+                    if(code != 0){
+                        alert(data.msg);
+                        return false;
+                    }
+                    alert('用户添加成功');
+                    window.location.href = '{{ url('admin/user/list') }}';
                 },
                 error: function(data)
                 {
-                    alert('系统错误，请稍后再试！');
+                    alert('创建失败，请检查输入信息！');
                 }
             });
         }

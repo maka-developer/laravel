@@ -34,14 +34,24 @@ class UserController extends Controller
             $result['msg'] = '手机号格式不正确';
             return response()->json($result);
         }
+        //个性签名设置
+        if(strlen($signature) > 100){
+            $result['code'] = -4;
+            $result['msg'] = '个性签名过长';
+            return response()->json($result);
+        }
 
-        $user = new UsersModel();
-        $user['name'] = $name;
-        $user['email'] = $email;
-        $user['phone'] = $phone;
-        $user['signature'] = $signature;
+        $userModel = new UsersModel();
+        $userModel->name = $name;
+        $userModel->user = $name;
+        $userModel->email = $email;
+        $userModel->phone = $phone;
+        $userModel->signature = $signature;
+        $userModel->hash = '$2y$10$ZaVJ6hf2ne5kZHvRBbqObuz78QDIKUKqHzLXBXsR3sMN.xbdXO1kG'; //123456
+        $userModel->state = 0;
+        $userModel->save();
 
-        //验证没写完，默认密码123456 需要确认下盐值，ajax没写完
-
+        $result['code'] = 0;
+        return response()->json($result);
     }
 }
