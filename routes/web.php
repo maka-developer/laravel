@@ -25,6 +25,7 @@ Route::any('api/uploadimg','Api\UploadController@img');           //上传图片
 Route::get('api/user/del','Admin\UserController@userDel');        //删除用户
 Route::group(['middleware' => ['web','csrf']], function () {        //带csrf   -group
     Route::any('api/login','Admin\LoginController@login');         //后台登录
+    Route::any('api/user/add','Api\UserController@add');         //后台登录
 });
 
 //admin 后台
