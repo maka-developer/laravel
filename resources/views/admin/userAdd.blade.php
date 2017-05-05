@@ -74,7 +74,6 @@
             </div>
         </div>
     </section>
-    <script src="{{ url('public/asset') }}/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         function uploadimg()
         {
@@ -130,5 +129,4 @@
     </script>
 @stop
 
-@extends('layout.link')
 

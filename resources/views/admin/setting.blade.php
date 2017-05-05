@@ -55,7 +55,6 @@
         </div>
     </section>
     <input type="file" name="photo" id="photo" style="display: none;">
-    <script src="{{ url('public/asset') }}/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         function fsubmit(){
             var data = new FormData($('#form1')[0]);
@@ -75,5 +74,3 @@
         })
     </script>
 @stop
-
-@extends('layout.link')

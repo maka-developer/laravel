@@ -55,13 +55,3 @@
 
 @stop
 
-@section('h_link')
-    <link href="{{ url('public/asset') }}/js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-    <link href="{{ url('public/asset') }}/js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ url('public/asset') }}/js/data-tables/DT_bootstrap.css" />
-
-    <link href="{{ url('public/asset') }}/css/style.css" rel="stylesheet">
-    <link href="{{ url('public/asset') }}/css/style-responsive.css" rel="stylesheet">
-@stop
-
-@extends('layout.link')
