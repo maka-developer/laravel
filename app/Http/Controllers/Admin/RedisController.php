@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class RedisController extends Controller
 {
-
+    //显示redis列表
     public function rlist()
     {
       	$list = array();
@@ -43,12 +43,5 @@ class RedisController extends Controller
         }
 
         return render('admin.redis',['list'=>$list]);
-    }
-
-    public function del(Request $request)
-    {
-        $key = $request->key;
-        Redis::delete($key);
-        return redirect('admin/redis');
     }
 }

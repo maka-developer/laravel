@@ -26,6 +26,9 @@
     <!--common-->
     <link href="{{ url('public/asset') }}/css/style.css" rel="stylesheet">
     <link href="{{ url('public/asset') }}/css/style-responsive.css" rel="stylesheet">
+    <script src="{{ url('public/asset') }}/js/jquery-1.10.2.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="{{ url('public/asset') }}/js/jquery-migrate-1.2.1.min.js"></script>
     @show
 </head>
 

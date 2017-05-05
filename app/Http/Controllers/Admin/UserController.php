@@ -20,14 +20,4 @@ class UserController extends Controller
     {
         return render('admin.userAdd');
     }
-    //删除用户
-    public function userDel(Request $request)
-    {
-        $id = $request->input('id',0);
-        if($id == 0 || $id == 1){
-            exit();
-        }
-        UsersModel::where('id',$id)->update(['state'=>1]);
-        return redirect('admin/user/list');
-    }
 }
