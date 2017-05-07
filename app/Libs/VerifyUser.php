@@ -23,11 +23,7 @@ class VerifyUser
         $name  = $user['user'];
 
         //redis事务处理同时存入
-        $ret = Redis::multi()
-            ->sadd(self::$email_redis_sKey,$email)
-            ->sadd(self::$phone_redis_sKey,$phone)
-            ->sadd(self::$user_redis_sKey,$name)
-            ->exec();
+        $ret = Redis::multi();
 
         $resArr['ret'] = $ret;
         $resArr['phone'] = Redis::sMembers(self::$phone_redis_sKey);
