@@ -29,7 +29,12 @@ class VerifyUser
             ->sadd(self::$user_redis_sKey,$name)
             ->exec();
 
-        return $ret;
+        $resArr['ret'] = $ret;
+        $resArr['phone'] = Redis::sMembers(self::$phone_redis_sKey);
+        $resArr['email'] = Redis::sMembers(self::$email_redis_sKey);
+        $resArr['user'] = Redis::sMembers(self::$user_redis_sKey);
+
+        return $resArr;
     }
     /*
      * 查询email是否存在
