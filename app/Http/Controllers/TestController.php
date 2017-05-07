@@ -3,14 +3,19 @@
 namespace app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Libs\Test;
+use Illuminate\Http\Request;
+use App\Libs\VerifyUser;
 
 class TestController extends Controller
 {
 
-    public function test()
+    public function test(Request $request)
     {
-        $test = config('menu');
-        var_dump($test);
+        $user['phone'] = $request->input('phone','');
+        $user['email'] = $request->input('email','');
+        $user['user'] = $request->input('user','');
+
+        $res = VerifyUser::setUser($user);
+        return response()->json($res);
     }
 }

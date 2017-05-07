@@ -5,24 +5,31 @@
 namespace App\Libs;
 use Illuminate\Support\Facades\Redis;
 
-class RSetUser
+class VerifyUser
 {
-    private $email_redis_hashKey = 'sys::user::email';      //保存email
-    private $phone_redis_hashKey = 'sys::user::phone';      //保存phone
-    private $user_redis_hashKey  = 'sys::user::user';       //保存user名
+    static private $email_redis_sKey = 'sys::user::email';      //保存email
+    static private $phone_redis_sKey = 'sys::user::phone';      //保存phone
+    static private $user_redis_sKey  = 'sys::user::user';       //保存user名
 
     /*
      * 将用户唯一值信息存入redis email、phone、user
      * code: 0 成功
      * msg：错误信息
      */
-    public function setUser($user)
+    static public function setUser($user)
     {
         $email = $user['email'];
         $phone = $user['phone'];
         $name  = $user['user'];
 
         //redis事务处理同时存入
+        $ret = Redis::multi()
+            ->sadd(self::$email_redis_sKey,$email)
+            ->sadd(self::$phone_redis_sKey,$phone)
+            ->sadd(self::$user_redis_sKey,$name)
+            ->exec();
+
+        return $ret;
     }
     /*
      * 查询email是否存在
