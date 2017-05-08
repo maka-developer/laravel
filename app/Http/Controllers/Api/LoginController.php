@@ -15,7 +15,7 @@ class LoginController extends Controller
         $user = $request->user;     //用户名
         $pass = $request->pass;     //密码
 
-        $user = UsersModel::where('user',$user)->first();   //按照用户名查询数据库
+        $user = UsersModel::where('user',$user)->orwhere('phone',$user)->orwhere('email',$user)->first();   //按照用户名查询数据库
         //dd($user['attributes']);                           //attributes获得数据中数组
         if(empty($user)){           //没有用户
             $result['code'] = 10;
