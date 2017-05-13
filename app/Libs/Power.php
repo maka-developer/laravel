@@ -1,4 +1,9 @@
 <?php
+/*
+ * 用户权限类
+ * lx
+ * 2017/5/8 22:43
+ */
 namespace App\Libs;
 
 class Power
@@ -45,6 +50,6 @@ class Power
         }
 
         $return_user['menu'] = $menu_list;
-        return $user;
+        return $return_user;
     }
 }

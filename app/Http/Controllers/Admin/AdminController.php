@@ -1,4 +1,7 @@
 <?php
+/*
+ * 后台主页及执行页
+ */
 
 namespace app\Http\Controllers\Admin;
 

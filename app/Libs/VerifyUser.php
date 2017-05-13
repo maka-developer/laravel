@@ -1,6 +1,8 @@
 <?php
 /**
- *  记录或验证用户唯一值
+ *  用户唯一值操作类
+ *  lx
+ *  2017/5/8 22:44
  */
 namespace App\Libs;
 use Illuminate\Support\Facades\Redis;
