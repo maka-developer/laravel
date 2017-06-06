@@ -12,19 +12,22 @@ use Illuminate\Http\Request;
 
 class GitController extends Controller
 {
-    private $key = 'aaaaaa';
+    private $secret = 'aaaaaa';
 
     public function getGit(Request $request)
     {
         header("Content-type: text/html; charset=utf-8");
-//        $resArr['request'] = $request;
-//        $resArr['server'] = $_SERVER;
-        $resArr['X-Hub-Signature'] = $request->header('X-Hub-Signature');
-        list($resArr['algo'], $resArr['hash']) = explode('=', $resArr['X-Hub-Signature'], 2);
-
+        //获取 Signature
+        $hubSignature  = $request->header('X-Hub-Signature');
+        list($algo, $hash) = explode('=', $hubSignature , 2);
         // 获取body内容
-        $resArr['payload'] = file_get_contents('php://input');
-        $resArr['payloadHash '] = hash_hmac($resArr['algo'], $resArr['payload'], $this->key);
-        dd($resArr);
+        $payload = file_get_contents('php://input');
+        // 计算签名
+        $payloadHash = hash_hmac($algo, $payload, $this->secret);
+        if ($hash !== $payloadHash) { //签名不匹配
+            throw new Exception("hash is not true");
+        }
+        $hook = $request->input('hook');
+        dd($hook);
     }
 }
