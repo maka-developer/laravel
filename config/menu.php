@@ -31,5 +31,20 @@ return [
         'url'=>'/admin/redis',
         'fa'=>'fa fa-briefcase',
         'list'=>[]
+    ],
+    'git'=>[
+        'name'=>'Git',
+        'url'=>'',
+        'fa'=>'fa fa-github',
+        'list'=>[
+            'git_log'=>[
+                'name'=>'Git记录',
+                'url'=>''
+            ],
+            'git_work'=>[
+                'name'=>'Git操作',
+                'url'=>''
+            ]
+        ]
     ]
 ];
