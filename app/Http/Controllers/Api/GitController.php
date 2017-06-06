@@ -33,11 +33,11 @@ class GitController extends Controller
 
         //定义变量
         $secret = '';
+        $path = '';
+        $shell = '';
 
         //查询是否存在
         $git_repository = GitRepositorysModel::where('name',$repositorie_name)->first();
-        dd($git_repository);
-        exit();
         if(empty($git_repository)){     //未找到数据,创建一条
             $git_repository = new GitRepositorysModel();
             $git_repository['name'] = $repositorie_name;
@@ -47,13 +47,22 @@ class GitController extends Controller
             $git_repository['state'] = 0;
             $git_repository->save();
         }else{
-            dd($git_repository);
+            $secret = $git_repository->secret;
+            $path = $git_repository->path;
+            $shell = $git_repository->shell;
         }
-        exit();
+
+        if($shell === ''){
+            throw new Exception("There is no shell");
+        }
+
         //判断是否push请求
         if($hook['events'][0] != 'push'){
             throw new Exception("is not push");
         }
+
+        echo 1;
+        exit();
         list($algo, $hash) = explode('=', $hubSignature , 2);
         // 计算签名
         $payloadHash = hash_hmac($algo, $payload, $this->secret);
