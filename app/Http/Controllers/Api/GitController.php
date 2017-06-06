@@ -34,10 +34,16 @@ class GitController extends Controller
         $payload = file_get_contents('php://input');        //body内容
         //查询是否存在
         $git_repository = GitRepositorysModel::where('name',$repositorie_name)->first();
-        if(!is_array($git_repository)){
-            echo 'error';
+        if(!is_array($git_repository)){     //未找到数据,创建一条
+            $git_repository = new GitRepositorysModel();
+            $git_repository['name'] = $repositorie_name;
+            $git_repository['secret'] = '';
+            $git_repository['path'] = '';
+            $git_repository['shell'] = '';
+            $git_repository['state'] = 0;
+            $git_repository->save();
         }
-        dd($git_repository);
+        echo 'success';
         exit();
 
         //判断是否push请求
