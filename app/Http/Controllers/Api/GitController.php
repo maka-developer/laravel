@@ -17,6 +17,6 @@ class GitController extends Controller
     {
         header("Content-type: text/html; charset=utf-8");
         Redis::hmset(config('rkey.ceshi.key'),$request->toArray());
-        Redis::hmset(config('rkey.ceshi.key'),$_SERVER);
+//        Redis::hmset(config('rkey.ceshi.key'),$_SERVER);
     }
 }
