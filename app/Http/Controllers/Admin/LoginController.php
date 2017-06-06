@@ -3,9 +3,6 @@
 namespace app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Model\UsersModel;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
