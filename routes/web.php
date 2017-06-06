@@ -28,7 +28,7 @@ Route::group(['middleware' => ['web','csrf']], function () {        //带csrf   
     Route::any('api/user/add','Api\UserController@add');         //后台登录
 });
 
-//admin 后台
+//admin 后台 view
 Route::get('admin/login','Admin\LoginController@index');          //登录页
 Route::group(['middleware' => ['admin']], function () {             //验证session -group
     Route::get('admin', 'Admin\AdminController@index');           //后台主页
@@ -36,6 +36,7 @@ Route::group(['middleware' => ['admin']], function () {             //验证sess
     Route::get('admin/setting', 'Admin\AdminController@information');          //管理员个人信息修改
     Route::get('admin/user/list', 'Admin\UserController@userList');          //用户列表
     Route::get('admin/user/add', 'Admin\UserController@userAdd');          //增加用户
+    Route::get('admin/git/log', 'Admin\GittController@logView');          //Git日志
 });
 
 
