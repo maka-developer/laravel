@@ -36,7 +36,7 @@ class GitController extends Controller
 
         //查询是否存在
         $git_repository = GitRepositorysModel::where('name',$repositorie_name)->first();
-        if(!is_array($git_repository)){     //未找到数据,创建一条
+        if(empty($git_repository)){     //未找到数据,创建一条
             $git_repository = new GitRepositorysModel();
             $git_repository['name'] = $repositorie_name;
             $git_repository['secret'] = '';
