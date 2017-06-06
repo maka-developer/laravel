@@ -34,6 +34,9 @@ class GitController extends Controller
         $payload = file_get_contents('php://input');        //body内容
         //查询是否存在
         $git_repository = GitRepositorysModel::where('name',$repositorie_name)->first();
+        if(!is_array($git_repository)){
+            echo 'error';
+        }
         dd($git_repository);
         exit();
 
