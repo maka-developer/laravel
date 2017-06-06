@@ -5,7 +5,7 @@
  * Date: 2017/6/6
  * Time: 16:19
  */
-namespace App\Http\Controllers\Admin;
+namespace app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 

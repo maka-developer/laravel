@@ -6,7 +6,6 @@
 namespace app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Libs\Power;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
