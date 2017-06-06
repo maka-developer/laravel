@@ -17,14 +17,14 @@ class GitController extends Controller
     public function getGit(Request $request)
     {
         header("Content-type: text/html; charset=utf-8");
-//        $resArr['request'] = $request;
+        $resArr['request'] = $request;
 //        $resArr['server'] = $_SERVER;
         $resArr['x-github-delivery'] = $request->header('x-github-delivery');
-        list($resArr['algo'], $resArr['hash']) = explode('=', $resArr['x-github-delivery'], 2);
-
-        // 获取body内容
-        $resArr['payload'] = file_get_contents('php://input');
-        $resArr['payloadHash '] = hash_hmac($resArr['algo'], $resArr['payload'], $this->key);
+//        list($resArr['algo'], $resArr['hash']) = explode('=', $resArr['x-github-delivery'], 2);
+//
+//        // 获取body内容
+//        $resArr['payload'] = file_get_contents('php://input');
+//        $resArr['payloadHash '] = hash_hmac($resArr['algo'], $resArr['payload'], $this->key);
         dd($resArr);
     }
 }
