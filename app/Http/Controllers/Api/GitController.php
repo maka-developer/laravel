@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Model\Git\GitRepositorysModel;
 use Illuminate\Http\Request;
+use Mockery\CountValidator\Exception;
 use Symfony\Component\Yaml\Exception\ParseException;
 
 class GitController extends Controller
@@ -54,11 +55,11 @@ class GitController extends Controller
         }
         //沒有shell命令
         if($shell === ''){
-            throw new ParseException("There is no shell");
+            throw new Exception("There is no shell");
         }
         //判断是否push请求
         if($hook['events'][0] != 'push'){
-            throw new ParseException("It's not push");
+            throw new Exception("It's not push");
         }
         echo 1;
         exit();
