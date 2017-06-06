@@ -37,8 +37,8 @@ return [
         'url'=>'',
         'fa'=>'fa fa-github',
         'list'=>[
-            'git_log'=>[
-                'name'=>'Git日志',
+            'git_list'=>[
+                'name'=>'Git列表',
                 'url'=>'admin/git/log'
             ],
             'git_work'=>[

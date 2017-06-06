@@ -23,6 +23,7 @@ Route::any('api/logout','Api\LoginController@logout');          //后台登出
 Route::get('api/delredis','Api\RedisController@del');           //删除redis-key
 Route::any('api/uploadimg','Api\UploadController@img');           //上传图片（纯上传）
 Route::get('api/user/del','Api\UserController@userDel');        //删除用户
+Route::get('api/git/getPush','Api\GitController@getGit');        //获取git触发
 Route::group(['middleware' => ['web','csrf']], function () {        //带csrf   -group
     Route::any('api/login','Api\LoginController@login');         //后台登录
     Route::any('api/user/add','Api\UserController@add');         //后台登录

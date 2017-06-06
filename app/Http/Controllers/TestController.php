@@ -5,17 +5,14 @@ namespace app\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Libs\VerifyUser;
+use Illuminate\Support\Facades\Redis;
 
 class TestController extends Controller
 {
 
     public function test(Request $request)
     {
-        $user['phone'] = $request->input('phone','');
-        $user['email'] = $request->input('email','');
-        $user['user'] = $request->input('user','');
-
-        $res = VerifyUser::setUser($user);
-        return response()->json($res);
+        $res = Redis::hgetall(config('rkey.ceshi.key'));
+        dd($res);
     }
 }

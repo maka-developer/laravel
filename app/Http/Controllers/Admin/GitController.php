@@ -13,6 +13,8 @@ class GitController extends Controller
 {
     public function logView()
     {
-        echo 1;
+        //获取git数据
+
+        return render('admin.gitLog');
     }
 }
