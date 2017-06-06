@@ -39,7 +39,7 @@ return [
         'list'=>[
             'git_log'=>[
                 'name'=>'Git日志',
-                'url'=>''
+                'url'=>'admin/git/log'
             ],
             'git_work'=>[
                 'name'=>'Git操作',
