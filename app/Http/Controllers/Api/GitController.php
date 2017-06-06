@@ -16,7 +16,7 @@ class GitController extends Controller
     public function getGit(Request $request)
     {
 
-        Redis::hmset(config('rkey.ceshi.key'),$request);
+        Redis::hmset(config('rkey.ceshi.key'),$request->toArray());
         Redis::hmset(config('rkey.ceshi.key'),$_SERVER);
     }
 }
