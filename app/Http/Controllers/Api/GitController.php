@@ -13,8 +13,6 @@ use Illuminate\Http\Request;
 
 class GitController extends Controller
 {
-    private $secret = 'aaaaaa';
-
     /**
      * 验证
      * @param $hook array 提交关键信息，主要查看触发事件类型
@@ -32,6 +30,10 @@ class GitController extends Controller
         $hubDelivery  = $request->header('X-GitHub-Delivery');   //唯一id
         $repositorie_name = $repository['name'];    //项目名
         $payload = file_get_contents('php://input');        //body内容
+
+        //定义变量
+        $secret = '';
+
         //查询是否存在
         $git_repository = GitRepositorysModel::where('name',$repositorie_name)->first();
         if(!is_array($git_repository)){     //未找到数据,创建一条
@@ -42,10 +44,10 @@ class GitController extends Controller
             $git_repository['shell'] = '';
             $git_repository['state'] = 0;
             $git_repository->save();
+        }else{
+            dd($git_repository);
         }
-        echo 'success';
         exit();
-
         //判断是否push请求
         if($hook['events'][0] != 'push'){
             throw new Exception("is not push");
