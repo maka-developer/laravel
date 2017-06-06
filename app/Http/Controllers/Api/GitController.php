@@ -8,6 +8,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Model\Git\GitLogModel;
 use App\Model\Git\GitRepositorysModel;
 use Illuminate\Http\Request;
 use Mockery\CountValidator\Exception;
@@ -55,7 +56,14 @@ class GitController extends Controller
         }
         //沒有shell命令
         if($shell === ''){
-            throw new Exception("There is no shell");
+            $git_log = new GitLogModel();
+            $git_log['delivery'] = $hubDelivery;
+            $git_log['error'] = 1;
+            $git_log['errorMsg'] = '沒有shell命令';
+            $git_log->save();
+            $resArr['code'] = 1;
+            $resArr['msg'] = 'There is no shell';
+            return response()->json($resArr);       // 想办法让git变红
         }
         //判断是否push请求
         if($hook['events'][0] != 'push'){
