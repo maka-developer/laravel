@@ -36,6 +36,7 @@ class GitController extends Controller
         $secret = '';
         $path = '';
         $shell = '';
+        $repository_id = 0;
 
         //查询是否存在
         $git_repository = GitRepositorysModel::where('name',$repositorie_name)->first();
@@ -51,11 +52,13 @@ class GitController extends Controller
             $secret = $git_repository->secret;
             $path = $git_repository->path;
             $shell = $git_repository->shell;
+            $repository_id = $git_repository->id;
         }
         //沒有shell命令
         if($shell === ''){
             $git_log = new GitLogModel();
             $git_log['delivery'] = $hubDelivery;
+            $git_log['repository_id'] = $repository_id;
             $git_log['shellCode'] = 400;
             $git_log['shellRes'] = '';
             $git_log['error'] = 1;
@@ -70,6 +73,7 @@ class GitController extends Controller
         if($hook['events'][0] != 'push'){
             $git_log = new GitLogModel();
             $git_log['delivery'] = $hubDelivery;
+            $git_log['repository_id'] = $repository_id;
             $git_log['shellCode'] = 400;
             $git_log['shellRes'] = '';
             $git_log['error'] = 1;
@@ -86,6 +90,7 @@ class GitController extends Controller
         if ($hash !== $payloadHash) { //签名不匹配
             $git_log = new GitLogModel();
             $git_log['delivery'] = $hubDelivery;
+            $git_log['repository_id'] = $repository_id;
             $git_log['shellCode'] = 400;
             $git_log['shellRes'] = '';
             $git_log['error'] = 1;
@@ -101,6 +106,7 @@ class GitController extends Controller
         exec($shel_str, $shell_res, $shell_code);
         $git_log = new GitLogModel();
         $git_log['delivery'] = $hubDelivery;
+        $git_log['repository_id'] = $repository_id;
         $git_log['shellCode'] = $shell_code;
         $git_log['shellRes'] = json_encode($shell_res);
         $git_log['error'] = 0;
