@@ -109,7 +109,7 @@ class GitController extends Controller
         $git_log['repository_id'] = $repository_id;
         $git_log['shellCode'] = $shell_code;
         $git_log['shellRes'] = json_encode($shell_res);
-        $git_log['error'] = 0;
+        $git_log['error'] = $shell_code;
         $git_log['errorMsg'] = '';
         $git_log->save();
         if($shell_code != 0){   //shell执行失败
