@@ -48,9 +48,9 @@
                                         @else
                                             <td>{{ $value['name'] }}</td>
                                         @endif
-                                        <th>@if($value['state']==0) 运行中 @elseif($value['state']==1) 待完善 @else 错误 @endif</th>
-                                        <th>@if(!empty($value['logs'])){{ count($value['logs']) }}@else 0 @endif</th>
-                                        <th>{{ $value['last_git'] }}</th>
+                                        <td>@if($value['state']==0) 运行中 @elseif($value['state']==1) 待完善 @else 错误 @endif</td>
+                                        <td>@if(!empty($value['logs'])){{ count($value['logs']) }}@else 0 @endif</td>
+                                        <td>{{ $value['last_git'] }}</td>
                                         <td>{{ $value['addtime'] }}</td>
                                         <td></td>
                                     </tr>
