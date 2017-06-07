@@ -15,7 +15,7 @@ class GitController extends Controller
     public function logView()
     {
         //获取git数据
-        $git_repositorys = GitRepositorysModel::select('id','name','addtime')->get();
+        $git_repositorys = GitRepositorysModel::select('id','name','url','addtime')->get();
 
         return render('admin.gitLog',['list'=>$git_repositorys]);
     }

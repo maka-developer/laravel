@@ -20,6 +20,7 @@ class GitController extends Controller
      * @param $hubSignature string 验证签名
      * @param $hubDelivery string 唯一id
      * @param $repositorie_name string 项目名
+     * @param $url string 项目url
      */
     public function getGit(Request $request)
     {
@@ -32,6 +33,7 @@ class GitController extends Controller
         $repositorie_name = $repository['name'];    //项目名
         $payload = file_get_contents('php://input');        //body内容
         $event = $request->header('X-GitHub-Event');
+        $url = $request->input('url','');
 
         //定义变量
         $secret = '';
@@ -45,6 +47,7 @@ class GitController extends Controller
             $git_repository = new GitRepositorysModel();
             $git_repository['name'] = $repositorie_name;
             $git_repository['secret'] = '';
+            $git_repository['url'] = $url;
             $git_repository['path'] = '';
             $git_repository['shell'] = '';
             $git_repository['state'] = 0;
