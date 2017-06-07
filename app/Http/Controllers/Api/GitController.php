@@ -60,7 +60,8 @@ class GitController extends Controller
 //            $git_log['error'] = 1;
 //            $git_log['errorMsg'] = '沒有shell命令';
 //            $git_log->save();
-            throw new Exception("There is no shell");
+
+            abort(403,'没有shell');
         }
         //判断是否push请求
         if($hook['events'][0] != 'push'){
