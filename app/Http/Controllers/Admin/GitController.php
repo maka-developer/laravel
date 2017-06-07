@@ -8,13 +8,16 @@
 namespace app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\Git\GitRepositorysModel;
 
 class GitController extends Controller
 {
     public function logView()
     {
         //获取git数据
-
+        $git_repositorys = GitRepositorysModel::all();
+        dd($git_repositorys);
+        exit();
         return render('admin.gitLog');
     }
 }
