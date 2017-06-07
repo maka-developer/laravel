@@ -1,6 +1,6 @@
 @extends('layout.admin')
-@section('u_name',$user['name'])@stop
-@section('u_headimg',$user['headimg'])@stop
+@section('u_name'){{ $user['name'] }}@stop
+@section('u_headimg'){{ $user['headimg'] }}@stop
 {{ $user['nav_active'] = 'git' }}
 {{ $user['active'] = 'git_list' }}
 @section('menu')
