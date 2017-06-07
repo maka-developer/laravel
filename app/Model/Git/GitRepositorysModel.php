@@ -11,4 +11,9 @@ class GitRepositorysModel extends Model{
     protected $primaryKey = 'id';
 
     public $timestamps = false;
+
+    public function logs()
+    {
+        return $this->hasMany('App\Model\Git\GitLogModel', 'repository_id', 'id');
+    }
 }

@@ -25,7 +25,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        项目列表
+                        项目列表(近30天数据)
                     </header>
                     <div class="panel-body">
                         <div class="adv-table">
@@ -48,8 +48,8 @@
                                         @else
                                             <td>{{ $value['name'] }}</td>
                                         @endif
-                                        <th>状态</th>
-                                        <th>提交次数</th>
+                                        <th>@if($value['state']==0) 运行中 @elseif($value['state']==1) 待完善 @else 错误 @endif</th>
+                                        <th><span>获取</span></th>
                                         <th>最近提交</th>
                                         <td>{{ $value['addtime'] }}</td>
                                         <td></td>
