@@ -55,13 +55,11 @@ class GitController extends Controller
         }
         //沒有shell命令
         if($shell === ''){
-            $git_log = new GitLogModel();
-            $git_log['delivery'] = $hubDelivery;
-            $git_log['error'] = 1;
-            $git_log['errorMsg'] = '沒有shell命令';
-            $git_log->save();
-            $resArr['code'] = 1;
-            $resArr['msg'] = 'There is no shell';
+//            $git_log = new GitLogModel();
+//            $git_log['delivery'] = $hubDelivery;
+//            $git_log['error'] = 1;
+//            $git_log['errorMsg'] = '沒有shell命令';
+//            $git_log->save();
             throw new Exception("There is no shell");
         }
         //判断是否push请求
