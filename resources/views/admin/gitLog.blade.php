@@ -25,26 +25,26 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Redis
+                        项目列表
                     </header>
                     <div class="panel-body">
                         <div class="adv-table">
                             <table  class="display table table-bordered table-striped" id="dynamic-table">
                                 <thead>
                                 <tr>
-                                    <th>Key</th>
-                                    <th>Type</th>
+                                    <th>项目名</th>
+                                    <th>添加时间e</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{--@foreach($list as $key=>$value)--}}
-                                    {{--<tr class="gradeA">--}}
-                                        {{--<td>{{ $value['key'] }}</td>--}}
-                                        {{--<td>{{ $value['type'] }}</td>--}}
-                                        {{--<td><a href="{{ url('api/delredis') }}?key={{ $value['key'] }}" class="del">删除</a></td>--}}
-                                    {{--</tr>--}}
-                                {{--@endforeach--}}
+                                @foreach($list as $key=>$value)
+                                    <tr class="gradeA">
+                                        <td>{{ $value['name'] }}</td>
+                                        <td>{{ $value['addtime'] }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
