@@ -104,7 +104,7 @@ class GitController extends Controller
         $git_log['errorMsg'] = '';
         $git_log->save();
         if($shell_code != 0){   //shell执行失败
-            abort(403, $shell_str);
+            abort(403, $hubDelivery);
         }else{
             $resArr['code'] = 200;
             $resArr['msg'] = 'success';
