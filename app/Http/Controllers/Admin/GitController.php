@@ -16,7 +16,8 @@ class GitController extends Controller
     public function logView()
     {
         //获取git数据
-        $git_repositorys = GitRepositorysModel::select('id','name','url','addtime','state')->get();
+        $git_repositorys = GitRepositorysModel::select('id','name','url','addtime','state')->get()->toArray();
+        dd($git_repositorys);
         $res = [];
         if(!empty($git_repositorys)){
             foreach($git_repositorys as $git_repository){
