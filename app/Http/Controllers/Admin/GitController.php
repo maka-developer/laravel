@@ -20,11 +20,11 @@ class GitController extends Controller
         $res = [];
         if(!empty($git_repositorys)){
             foreach($git_repositorys as $key=>$value){
-                $res[$key]['id'] = $git_repositorys->id;
-                $res[$key]['name'] = $git_repositorys->name;
-                $res[$key]['url'] = $git_repositorys->url;
-                $res[$key]['addtime'] = $git_repositorys->addtime;
-                $res[$key]['state'] = $git_repositorys->state;
+                $res[$key]['id'] = $git_repositorys['id'];
+                $res[$key]['name'] = $git_repositorys['name'];
+                $res[$key]['url'] = $git_repositorys['url'];
+                $res[$key]['addtime'] = $git_repositorys['addtime'];
+                $res[$key]['state'] = $git_repositorys['state'];
                 $res[$key]['logs'] = GitLogModel::where('repository_id',$res[$key]['id'])->orderBy('addtime','desc')->get();
                 $res[$key]['log_count'] = GitLogModel::where('repository_id',$res[$key]['id'])->count();
             }
