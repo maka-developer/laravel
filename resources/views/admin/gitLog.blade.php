@@ -40,7 +40,11 @@
                                 <tbody>
                                 @foreach($list as $key=>$value)
                                     <tr class="gradeA">
-                                        <td><a href="{{ $value['url'] }}">{{ $value['name'] }}</a></td>
+                                        @if($value['url'] != '')
+                                            <td><a href="{{ $value['url'] }}">{{ $value['name'] }}</a></td>
+                                        @else
+                                            <td>{{ $value['name'] }}</td>
+                                        @endif
                                         <td>{{ $value['addtime'] }}</td>
                                         <td></td>
                                     </tr>
