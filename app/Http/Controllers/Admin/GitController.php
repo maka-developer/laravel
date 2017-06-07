@@ -25,8 +25,9 @@ class GitController extends Controller
                 $res[$key]['url'] = $value['url'];
                 $res[$key]['addtime'] = $value['addtime'];
                 $res[$key]['state'] = $value['state'];
-                $res[$key]['logs'] = GitLogModel::where('repository_id',$res[$key]['id'])->orderBy('addtime','desc')->get()->toArray();
-                $res[$key]['last_work'] = $res[$key]['logs'][0]['addtime'];
+                $logs = GitLogModel::where('repository_id',$res[$key]['id'])->orderBy('addtime','desc')->get()->toArray();
+                $res[$key]['logs'] = $logs;
+                $res[$key]['last_git'] = empty($logs) ? '无操作记录' : $logs[0]['addtime'];
             }
         }
         dd($res);
