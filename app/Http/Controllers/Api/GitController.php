@@ -31,6 +31,7 @@ class GitController extends Controller
         $hubDelivery  = $request->header('X-GitHub-Delivery');   //唯一id
         $repositorie_name = $repository['name'];    //项目名
         $payload = file_get_contents('php://input');        //body内容
+        $event = $request->header('X-GitHub-Event');
 
         //定义变量
         $secret = '';
@@ -69,7 +70,7 @@ class GitController extends Controller
             abort(403, json_encode($resArr));
         }
         //判断是否push请求
-        if($hook['events'][0] != 'push'){
+        if($hook['events'][0] != 'push' && $event != 'push'){
             $git_log = new GitLogModel();
             $git_log['delivery'] = $hubDelivery;
             $git_log['repository_id'] = $repository_id;
