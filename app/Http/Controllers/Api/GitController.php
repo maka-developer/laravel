@@ -64,10 +64,7 @@ class GitController extends Controller
             $git_log['error'] = 1;
             $git_log['errorMsg'] = '沒有shell命令';
             $git_log->save();
-            abort(403);
-            $resArr['code'] = 4031;
-            $resArr['msg'] = '没有shell命令';
-            return response()->json();
+            abort(403, $hubDelivery);
         }
         //判断是否push请求
         if($hook['events'][0] != 'push'){
@@ -79,10 +76,7 @@ class GitController extends Controller
             $git_log['error'] = 1;
             $git_log['errorMsg'] = '不是push请求';
             $git_log->save();
-            abort(403);
-            $resArr['code'] = 4032;
-            $resArr['msg'] = '不是push触发';
-            return response()->json();
+            abort(403, $hubDelivery);
         }
         list($algo, $hash) = explode('=', $hubSignature , 2);
         // 计算签名
@@ -96,10 +90,7 @@ class GitController extends Controller
             $git_log['error'] = 1;
             $git_log['errorMsg'] = '签名不匹配';
             $git_log->save();
-            abort(403);
-            $resArr['code'] = 4033;
-            $resArr['msg'] = '签名不匹配';
-            return response()->json();
+            abort(403, $hubDelivery);
         }
         //生成shell命令
         $shel_str = 'cd '.$path.';'.$shell;
@@ -113,10 +104,7 @@ class GitController extends Controller
         $git_log['errorMsg'] = '';
         $git_log->save();
         if($shell_code != 0){   //shell执行失败
-            abort(403);
-            $resArr['code'] = 4034;
-            $resArr['msg'] = 'shell执行失败';
-            return response()->json();
+            abort(403,'$shell_str');
         }else{
             $resArr['code'] = 200;
             $resArr['msg'] = 'success';
