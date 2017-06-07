@@ -29,8 +29,6 @@ class GitController extends Controller
                 $res[$id]['logs'] = GitLogModel::where('repository_id',$res[$id]['id'])->orderBy('addtime','desc')->get();
             }
         }
-        dd($res);
-        exit();
-        return render('admin.gitLog',['list'=>$git_repositorys]);
+        return render('admin.gitLog',['list'=>$res]);
     }
 }
