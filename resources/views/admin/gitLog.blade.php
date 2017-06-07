@@ -33,7 +33,10 @@
                                 <thead>
                                 <tr>
                                     <th>项目名</th>
-                                    <th>添加时间e</th>
+                                    <th>状态</th>
+                                    <th>提交次数</th>
+                                    <th>最近提交</th>
+                                    <th>添加时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -45,6 +48,9 @@
                                         @else
                                             <td>{{ $value['name'] }}</td>
                                         @endif
+                                        <th>状态</th>
+                                        <th>提交次数</th>
+                                        <th>最近提交</th>
                                         <td>{{ $value['addtime'] }}</td>
                                         <td></td>
                                     </tr>
