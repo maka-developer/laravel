@@ -61,7 +61,7 @@ class GitController extends Controller
 //            $git_log['errorMsg'] = '沒有shell命令';
 //            $git_log->save();
 
-            abort(403,'没有shell');
+            abort(403,'没有shell命令');
         }
         //判断是否push请求
         if($hook['events'][0] != 'push'){
