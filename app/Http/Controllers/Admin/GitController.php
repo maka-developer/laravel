@@ -27,7 +27,6 @@ class GitController extends Controller
                 $res[$id]['addtime'] = $git_repository->addtime;
                 $res[$id]['state'] = $git_repository->state;
                 $res[$id]['logs'] = GitLogModel::where('repository_id',$res[$id]['id'])->orderBy('addtime','desc')->get();
-                $res[$id]['log_count'] = GitLogModel::where('repository_id',$res[$id]['id'])->count();
             }
         }
         dd($res);
