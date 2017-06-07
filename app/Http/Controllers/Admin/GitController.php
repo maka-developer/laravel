@@ -26,6 +26,7 @@ class GitController extends Controller
                 $res[$key]['addtime'] = $value['addtime'];
                 $res[$key]['state'] = $value['state'];
                 $res[$key]['logs'] = GitLogModel::where('repository_id',$res[$key]['id'])->orderBy('addtime','desc')->get()->toArray();
+                $res[$key]['last_work'] = $res[$key]['logs'][0]['addtime'];
             }
         }
         dd($res);
