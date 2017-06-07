@@ -11,7 +11,6 @@ use App\Http\Controllers\Controller;
 use App\Model\Git\GitLogModel;
 use App\Model\Git\GitRepositorysModel;
 use Illuminate\Http\Request;
-use League\Flysystem\Exception;
 
 class GitController extends Controller
 {
@@ -55,24 +54,67 @@ class GitController extends Controller
         }
         //沒有shell命令
         if($shell === ''){
-//            $git_log = new GitLogModel();
-//            $git_log['delivery'] = $hubDelivery;
-//            $git_log['error'] = 1;
-//            $git_log['errorMsg'] = '沒有shell命令';
-//            $git_log->save();
-            abort(403,'没有shell命令');
+            $git_log = new GitLogModel();
+            $git_log['delivery'] = $hubDelivery;
+            $git_log['shellCode'] = 400;
+            $git_log['shellRes'] = '';
+            $git_log['error'] = 1;
+            $git_log['errorMsg'] = '沒有shell命令';
+            $git_log->save();
+            abort(403);
+            $resArr['code'] = 4031;
+            $resArr['msg'] = '没有shell命令';
+            return response()->json();
         }
         //判断是否push请求
         if($hook['events'][0] != 'push'){
-            throw new Exception("It's not push");
+            $git_log = new GitLogModel();
+            $git_log['delivery'] = $hubDelivery;
+            $git_log['shellCode'] = 400;
+            $git_log['shellRes'] = '';
+            $git_log['error'] = 1;
+            $git_log['errorMsg'] = '不是push请求';
+            $git_log->save();
+            abort(403);
+            $resArr['code'] = 4032;
+            $resArr['msg'] = '不是push触发';
+            return response()->json();
         }
-        echo 1;
-        exit();
         list($algo, $hash) = explode('=', $hubSignature , 2);
         // 计算签名
-        $payloadHash = hash_hmac($algo, $payload, $this->secret);
+        $payloadHash = hash_hmac($algo, $payload, $secret);
         if ($hash !== $payloadHash) { //签名不匹配
-            throw new Exception("hash is not true");
+            $git_log = new GitLogModel();
+            $git_log['delivery'] = $hubDelivery;
+            $git_log['shellCode'] = 400;
+            $git_log['shellRes'] = '';
+            $git_log['error'] = 1;
+            $git_log['errorMsg'] = '签名不匹配';
+            $git_log->save();
+            abort(403);
+            $resArr['code'] = 4033;
+            $resArr['msg'] = '签名不匹配';
+            return response()->json();
+        }
+        //生成shell命令
+        $shel_str = 'cd '.$path.';'.$shell;
+        exec($shel_str, $shell_res, $shell_code);
+        $git_log = new GitLogModel();
+        $git_log['delivery'] = $hubDelivery;
+        $git_log['shellCode'] = $shell_code;
+        $git_log['shellRes'] = json_encode($shell_res);
+        $git_log['error'] = 0;
+        $git_log['errorMsg'] = '';
+        $git_log->save();
+        if($shell_code != 0){   //shell执行失败
+            abort(403);
+            $resArr['code'] = 4034;
+            $resArr['msg'] = 'shell执行失败';
+            return response()->json();
+        }else{
+            $resArr['code'] = 200;
+            $resArr['msg'] = 'success';
+            return response()->json();
         }
     }
 }
