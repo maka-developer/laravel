@@ -50,7 +50,7 @@
                                         @endif
                                         <th>@if($value['state']==0) 运行中 @elseif($value['state']==1) 待完善 @else 错误 @endif</th>
                                         <th>@if(!empty($value['logs'])){{ count($value['logs']) }}@else 0 @endif</th>
-                                        <th>@if(!empty($value['logs'])){{ count($value['logs'][0]['addtime']) }}@else 无操作记录@endif </th>
+                                        <th>{{ $value['last_git'] }}</th>
                                         <td>{{ $value['addtime'] }}</td>
                                         <td></td>
                                     </tr>

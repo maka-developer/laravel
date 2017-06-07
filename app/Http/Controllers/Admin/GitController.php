@@ -30,7 +30,6 @@ class GitController extends Controller
                 $res[$key]['last_git'] = empty($logs) ? '无操作记录' : $logs[0]['addtime'];
             }
         }
-        dd($res);
         return render('admin.gitLog',['list'=>$res]);
     }
 }
