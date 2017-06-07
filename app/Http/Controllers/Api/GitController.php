@@ -34,12 +34,17 @@ class GitController extends Controller
         $payload = file_get_contents('php://input');        //body内容
         $event = $request->header('X-GitHub-Event');
         $url = $request->input('url','');
+        $commits = $request->input('commits','');
 
         //定义变量
         $secret = '';
         $path = '';
         $shell = '';
         $repository_id = 0;
+        $commits_url = '';
+        if(is_array($commits)){
+            $commits_url = $commits['url'];
+        }
 
         //查询是否存在
         $git_repository = GitRepositorysModel::where('name',$repositorie_name)->first();
@@ -62,6 +67,7 @@ class GitController extends Controller
         if($shell === ''){
             $git_log = new GitLogModel();
             $git_log['delivery'] = $hubDelivery;
+            $git_log['commits_url'] = $commits_url;
             $git_log['repository_id'] = $repository_id;
             $git_log['shellCode'] = 400;
             $git_log['shellRes'] = '';
@@ -76,6 +82,7 @@ class GitController extends Controller
         if($hook['events'][0] != 'push' && $event != 'push'){
             $git_log = new GitLogModel();
             $git_log['delivery'] = $hubDelivery;
+            $git_log['commits_url'] = $commits_url;
             $git_log['repository_id'] = $repository_id;
             $git_log['shellCode'] = 400;
             $git_log['shellRes'] = '';
@@ -92,6 +99,7 @@ class GitController extends Controller
         if ($hash !== $payloadHash) { //签名不匹配
             $git_log = new GitLogModel();
             $git_log['delivery'] = $hubDelivery;
+            $git_log['commits_url'] = $commits_url;
             $git_log['repository_id'] = $repository_id;
             $git_log['shellCode'] = 400;
             $git_log['shellRes'] = '';
@@ -107,6 +115,7 @@ class GitController extends Controller
         exec($shell_str, $shell_res, $shell_code);
         $git_log = new GitLogModel();
         $git_log['delivery'] = $hubDelivery;
+        $git_log['commits_url'] = $commits_url;
         $git_log['repository_id'] = $repository_id;
         $git_log['shellCode'] = $shell_code;
         $git_log['shellRes'] = json_encode($shell_res);
