@@ -1,9 +1,8 @@
 @extends('layout.admin')
-@section('u_name',$user['name'])
-@section('u_headimg',$user['headimg'])
-{{ $user['nav_active'] = 'user' }}
-{{ $user['active'] = 'user_list' }}
-
+@section('u_name'){{ $user['name'] }}@stop
+@section('u_headimg'){{ $user['headimg'] }}@stop
+<?php $user['nav_active'] = 'user' ?>
+<?php $user['active'] = 'user_list' ?>
 @section('menu')
     <ul class="nav nav-pills nav-stacked custom-nav">
         @foreach($user['menu'] as $key=>$value)
