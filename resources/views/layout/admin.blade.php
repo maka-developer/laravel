@@ -58,9 +58,9 @@
             <!-- visible to small devices only 包含手机版 -->
             <div class="visible-xs hidden-sm hidden-md hidden-lg">
                 <div class="media logged-user">
-                    <img alt="" src="@yield('u_headimg')" class="media-object">
+                    <img alt="" src="@section('u_headimg')@show" class="media-object">
                     <div class="media-body">
-                        <h4><a href="#">@yield('u_name')</a></h4>
+                        <h4><a href="#">@section('u_name')@show</a></h4>
                     </div>
                 </div>
 
