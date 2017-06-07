@@ -43,7 +43,7 @@ class GitController extends Controller
         $repository_id = 0;
         $commits_url = '';
         if(is_array($commits)){
-            $commits_url = $commits['url'];
+            $commits_url = $commits[0]['url'];
         }
 
         //查询是否存在
