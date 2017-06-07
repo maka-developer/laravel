@@ -17,7 +17,8 @@ class GitController extends Controller
         //获取git数据
         $git_repositorys = GitRepositorysModel::all();
         foreach($git_repositorys as $key=>$value){
-            echo $key;
+            var_dump($value);
+            echo "<br>";
         };
 //        dd($git_repositorys);
         exit();
