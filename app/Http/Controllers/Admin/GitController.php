@@ -16,7 +16,7 @@ class GitController extends Controller
     {
         //获取git数据
         $git_repositorys = GitRepositorysModel::get();
-        var_dump($git_repositorys);
+        dd($git_repositorys);
         exit();
         return render('admin.gitLog');
     }
