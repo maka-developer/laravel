@@ -11,8 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Git\GitLogModel;
 use App\Model\Git\GitRepositorysModel;
 use Illuminate\Http\Request;
-use Mockery\CountValidator\Exception;
-use Symfony\Component\Yaml\Exception\ParseException;
+use League\Flysystem\Exception;
 
 class GitController extends Controller
 {
@@ -63,7 +62,7 @@ class GitController extends Controller
             $git_log->save();
             $resArr['code'] = 1;
             $resArr['msg'] = 'There is no shell';
-            return response()->json($resArr);       // 想办法让git变红
+            throw new Exception("There is no shell");
         }
         //判断是否push请求
         if($hook['events'][0] != 'push'){
