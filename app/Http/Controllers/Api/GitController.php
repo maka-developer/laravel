@@ -93,8 +93,8 @@ class GitController extends Controller
             abort(403, $hubDelivery);
         }
         //生成shell命令
-        $shel_str = 'cd '.$path.';'.$shell;
-        exec($shel_str, $shell_res, $shell_code);
+        $shell_str = 'cd '.$path.';'.$shell;
+        exec($shell_str, $shell_res, $shell_code);
         $git_log = new GitLogModel();
         $git_log['delivery'] = $hubDelivery;
         $git_log['repository_id'] = $repository_id;
@@ -104,7 +104,7 @@ class GitController extends Controller
         $git_log['errorMsg'] = '';
         $git_log->save();
         if($shell_code != 0){   //shell执行失败
-            abort(403,'$shell_str');
+            abort(403, $shell_str);
         }else{
             $resArr['code'] = 200;
             $resArr['msg'] = 'success';
