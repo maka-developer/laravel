@@ -52,7 +52,9 @@
                                         <td>@if(!empty($value['logs'])){{ count($value['logs']) }}@else 0 @endif</td>
                                         <td>{{ $value['last_git'] }}</td>
                                         <td>{{ $value['addtime'] }}</td>
-                                        <td></td>
+                                        <td>
+                                            <a href="">修改</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
