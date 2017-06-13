@@ -35,6 +35,7 @@ class GitController extends Controller
         $event = $request->header('X-GitHub-Event');
         $url = $request->input('url','');
         $commits = $request->input('commits','');
+        $repository = $request->input('repository','');
 
         //定义变量
         $secret = '';
@@ -44,6 +45,9 @@ class GitController extends Controller
         $commits_url = '';
         if(is_array($commits)){
             $commits_url = $commits[0]['url'];
+        }
+        if(is_array($repository)){
+            $url = $repository['html_url'];
         }
 
         //查询是否存在
