@@ -14,7 +14,7 @@ class WxController extends Controller
 
     public function index()
     {
-
+        echo 1;
         $url = "https://wx.loodp.com/wxbg?token=";
     }
 }
