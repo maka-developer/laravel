@@ -9,7 +9,7 @@ namespace app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-class GitController extends Controller
+class WxController extends Controller
 {
 
     public function index()

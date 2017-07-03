@@ -38,6 +38,6 @@ Route::group(['middleware' => ['admin']], function () {             //验证sess
     Route::get('admin/user/list', 'Admin\UserController@userList');          //用户列表
     Route::get('admin/user/add', 'Admin\UserController@userAdd');          //增加用户
     Route::get('admin/git/log', 'Admin\GitController@logView');          //Git日志
-    Route::get('admin/wx', 'Admin\GitController@logView');          //微信登录二维码
+    Route::get('admin/wx', 'Admin\WxController@index');          //微信登录二维码
 });
 
