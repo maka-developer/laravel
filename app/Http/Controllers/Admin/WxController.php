@@ -9,6 +9,7 @@ namespace app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Libs\Curl;
+use Illuminate\Support\Facades\Redis;
 
 class WxController extends Controller
 {
@@ -17,6 +18,7 @@ class WxController extends Controller
     {
         $rArr['token'] = md5(time() . rand(100000,999999));
         $rArr['time'] = time();
+        Redis::set(config('rkey.WxState.key'), json_encode($rArr));
         $url = "https://wx.loodp.com/wxbg?token=".$rArr['token'];
         $curl = new Curl($url);
         $res = $curl->request([],'GET','',1,'all');
