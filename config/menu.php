@@ -46,5 +46,11 @@ return [
                 'url'=>''
             ]
         ]
+    ],
+    'wechat'=>[
+        'name'=> 'WeChat',
+        'url' => '/admin/wx',
+        'fa' => '',
+        'list' => [],
     ]
 ];
